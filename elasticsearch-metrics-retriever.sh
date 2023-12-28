@@ -113,8 +113,6 @@ while [ "$#" -gt 0 ]; do
   shift 2
 done
 
-echo "$username"
-
 if [ -z "$api_key" ] && [ -z "$username" ] && [ -z "$password" ] && [ -z "$url" ]; then
   help
   read -p "No arguments detected! Do you wish to proceed with wizard method? [y/n]: " wiz;
