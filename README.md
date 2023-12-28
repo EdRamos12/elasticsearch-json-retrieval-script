@@ -8,11 +8,37 @@ Make sure you have the following prerequisites installed:
 
 - [curl](https://curl.se/)
 
-## Usage
+## How to Run
+
+### Option 1: Run the Script via Curl (Bash One-Liner)
+
+Run the following command in your terminal:
 
 ```bash
-bash get_json.sh -url <url> -u <username> -p <password> -api_key <api_key>
+bash -c "$(curl -s https://raw.githubusercontent.com/EdRamos12/elasticsearch-json-retrieval-script/main/elasticsearch-metrics-retriever.sh)" -- -url <your_elasticsearch_url> -u <your_username> -p <your_password> -api_key <your_api_key>
 ```
+
+This one-liner downloads and executes the script directly from the GitHub repository.
+
+### Option 2: Run the Script Directly
+
+1. Clone the repository:
+
+  ```bash
+  git clone https://github.com/EdRamos12/elasticsearch-json-retrieval-script.git
+  ```
+
+2. Navigate to the script directory:
+
+  ```bash
+  cd elasticsearch-json-retrieval-script
+  ```
+
+3. Run the script with the desired options:
+
+  ```bash
+  bash elasticsearch-metrics-retriever.sh -url <your_elasticsearch_url> -u <your_username> -p <your_password> -api_key <your_api_key>
+  ```
 
 ## Options
 - `-url`: Elasticsearch URL (cloud and localhost).
@@ -23,7 +49,7 @@ bash get_json.sh -url <url> -u <username> -p <password> -api_key <api_key>
 ## Example
 
 ```bash
-bash get_json.sh -url https://your-elasticsearch-cluster -u your-username -p your-password
+bash elasticsearch-metrics-retriever.sh -url https://your-elasticsearch-cluster -u your-username -p your-password
 ```
 
 ## Wizard Method
@@ -31,7 +57,7 @@ bash get_json.sh -url https://your-elasticsearch-cluster -u your-username -p you
 If no arguments are provided, the script will prompt you with a wizard to enter the required information.
 
 ```bash
-bash get_json.sh
+bash elasticsearch-metrics-retriever.sh
 ```
 
 ## Notes
