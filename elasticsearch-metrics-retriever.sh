@@ -30,7 +30,7 @@ help() {
 }
 
 display_usage() {
-  echo "Usage: $0 -url <url> -u <username> -p <password> -api_key <api_key>"
+  echo "Usage: -url <url> -u <username> -p <password> -api_key <api_key>"
 }
 
 log() {
@@ -90,29 +90,27 @@ request_json() {
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
-    -u)
+    -u|--username)
       username="$2"
-      shift 2
       ;;
-    -p)
+    -p|--password)
       password="$2"
-      shift 2
       ;;
-    -url)
+    -url|--url)
       url="$2"
-      shift 2
       ;;
-    -api_key)
+    -api_key|--api_key)
       api_key="$2"
-      shift 2
       ;;
-    -help)
+    -h|--help)
       help
-      exit;;
+      exit
+      ;;
     *)
       display_usage
       ;;
   esac
+  shift 2
 done
 
 echo "$username"
@@ -150,7 +148,10 @@ fi
 
 for key in "${!requests[@]}"; do
   value="${requests[$key]}"
-  result=$(request_json "$value" "$key.json")
+
+  current_timestamp=$(date +%s)
+
+  result=$(request_json "$value" "${key}_${current_timestamp}.json")
 done
 
 log "Successfully requested and downloaded all required json!"
